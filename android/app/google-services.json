@@ -1,0 +1,142 @@
+{
+  "project_info": {
+    "project_number": "890458727287",
+    "project_id": "orangetaxi-37ec1",
+    "storage_bucket": "orangetaxi-37ec1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890458727287:android:c4397445b50d58e1a4f772",
+        "android_client_info": {
+          "package_name": "com.example.orange_taxi_customer_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890458727287-oheontb569hpi3qiar94prdkn1j5ck61.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.orange_taxi_customer_app",
+            "certificate_hash": "7603f308efcf2e792e0619a2f946417460c838d2"
+          }
+        },
+        {
+          "client_id": "890458727287-ivob8q3i8s343tgt3ecctog4vsq54fru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTg3ApSkSGtU6sVwV5bt1czIvRJvy8xNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890458727287-18f91jr668vcon5s608kq6cqmbladph2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "890458727287-93q1ini92tcn30jg2kp95jor8dkss1s3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.orangeTaxiCustomerApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890458727287:android:026738b708fc797ca4f772",
+        "android_client_info": {
+          "package_name": "com.thereciprocalsolutions.orange_taxi_customer_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890458727287-4rbinbml6v4c0li2cp1q4v17sk25rlpu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thereciprocalsolutions.orange_taxi_customer_app",
+            "certificate_hash": "7603f308efcf2e792e0619a2f946417460c838d2"
+          }
+        },
+        {
+          "client_id": "890458727287-ivob8q3i8s343tgt3ecctog4vsq54fru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTg3ApSkSGtU6sVwV5bt1czIvRJvy8xNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890458727287-18f91jr668vcon5s608kq6cqmbladph2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "890458727287-93q1ini92tcn30jg2kp95jor8dkss1s3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.orangeTaxiCustomerApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890458727287:android:1e8db1682ee396e3a4f772",
+        "android_client_info": {
+          "package_name": "com.thereciprocalsolutions.orange_taxi_driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890458727287-cla2j6scauba0kiknl33im9gkpn6vkiq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thereciprocalsolutions.orange_taxi_driver",
+            "certificate_hash": "b25021960bc54e92ca7d2137dfffa79ff224b8ea"
+          }
+        },
+        {
+          "client_id": "890458727287-ivob8q3i8s343tgt3ecctog4vsq54fru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTg3ApSkSGtU6sVwV5bt1czIvRJvy8xNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890458727287-18f91jr668vcon5s608kq6cqmbladph2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "890458727287-93q1ini92tcn30jg2kp95jor8dkss1s3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.orangeTaxiCustomerApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

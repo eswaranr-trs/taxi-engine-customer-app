@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taxi App UX Styles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: #ECEDF1; color: #15171C; padding: 40px 16px 80px; }
+  h1 { text-align: center; font-size: 28px; }
+  .lead { text-align: center; color: #5B6070; margin: 8px auto 40px; max-width: 620px; line-height: 1.5; }
+
+  /* ---------- SECTION ---------- */
+  .style { max-width: 1060px; margin: 0 auto 56px; background: #FFFFFF; border-radius: 28px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.05); }
+  .style-head { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px; margin-bottom: 24px; }
+  .style-head h2 { font-size: 22px; }
+  .style-head .tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #5B6070;
+    background: #F1F2F5; padding: 4px 10px; border-radius: 20px; margin-bottom: 8px; }
+  .style-head p { color: #5B6070; font-size: 14px; margin-top: 6px; line-height: 1.55; }
+  .style-head ul { font-size: 13.5px; color: #333744; line-height: 1.55; padding-left: 18px; }
+  .style-head li { margin-bottom: 4px; }
+  .style-head li b { color: #15171C; }
+  @media (max-width: 760px) { .style-head { grid-template-columns: 1fr; } }
+  .phones { display: flex; gap: 24px; overflow-x: auto; padding: 4px 4px 12px; justify-content: safe center; }
+  .phone-wrap { flex: 0 0 auto; text-align: center; }
+  .phone-wrap > span { display: block; font-size: 13px; color: #5B6070; margin-top: 10px; }
+
+  /* ---------- PHONE (shared) ---------- */
+  .phone { width: 290px; height: 610px; border-radius: 40px; background: var(--bg); color: var(--text); font-family: var(--font);
+    border: 8px solid #111; position: relative; overflow: hidden; text-align: left; }
+  .status { position: absolute; top: 0; left: 0; right: 0; height: 34px; display: flex; justify-content: space-between; align-items: center;
+    padding: 0 22px; font-size: 12px; font-weight: 600; z-index: 9; color: var(--status, var(--text)); }
+  .status b { width: 46px; height: 10px; border-radius: 3px; background: currentColor; opacity: .8; }
+  .muted { color: var(--muted); }
+  .map { position: absolute; inset: 0; background: var(--map-bg); }
+  .map svg { width: 100%; height: 100%; display: block; }
+
+  /* =========================================================
+     STYLE A — MAP-FIRST (Sunset Maroon)
+     ========================================================= */
+  .sa { --font: 'Poppins', sans-serif; --bg: #FCF7F6; --surface: #FFFFFF; --surface2: #F8ECEC; --text: #1B1416; --muted: #7A6A6D;
+    --accent: #790D16; --accent2: #A3212F; --on-accent: #FFFFFF; --border: #F1E3E3;
+    --map-bg: #F6E9E6; --map-road: #FFFFFF; --map-block: #EFDAD6; --route: #790D16; --shadow: 0 8px 24px rgba(121,13,22,.12); }
+  .sa .btn { display: flex; align-items: center; justify-content: center; position: relative; height: 52px; border-radius: 30px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent)); color: var(--on-accent); font-weight: 600; font-size: 15px; box-shadow: var(--shadow); }
+  .sa .btn i { position: absolute; right: 6px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.2);
+    display: grid; place-items: center; font-style: normal; }
+  .sa .hero { height: 300px; position: relative; overflow: hidden; }
+  .sa .hero img { width: 100%; position: absolute; top: -70px; }
+  .sa .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 55%, var(--bg)); }
+  .sa .login { padding: 0 22px; margin-top: -10px; position: relative; }
+  .sa .login h3 { font-size: 30px; line-height: 1.1; }
+  .sa .login h3 em { font-style: normal; color: var(--accent); display: block; }
+  .sa .login p { font-size: 13px; margin: 8px 0 18px; line-height: 1.45; }
+  .sa .field { display: flex; align-items: center; gap: 10px; height: 52px; padding: 0 14px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 18px; box-shadow: var(--shadow); font-size: 13px; }
+  .sa .field b { padding-right: 10px; border-right: 1px solid var(--border); font-weight: 600; }
+  .sa .remember { display: flex; align-items: center; gap: 8px; font-size: 13px; margin: 14px 0 18px; }
+  .sa .remember i { width: 18px; height: 18px; border-radius: 5px; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 11px; font-style: normal; }
+  .sa .or { display: flex; align-items: center; gap: 12px; font-size: 11px; margin: 16px 30px 12px; }
+  .sa .or::before, .sa .or::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sa .signup { text-align: center; font-size: 12.5px; }
+  .sa .signup b { color: var(--accent); }
+  .sa .topbar { position: absolute; top: 40px; left: 16px; right: 16px; display: flex; justify-content: space-between; z-index: 3; }
+  .sa .round { width: 40px; height: 40px; border-radius: 50%; background: var(--surface); box-shadow: var(--shadow); display: grid; place-items: center; }
+  .sa .avatar { background: var(--accent); color: #fff; font-weight: 700; font-size: 14px; }
+  .sa .sheet { position: absolute; left: 0; right: 0; bottom: 0; background: var(--surface); border-radius: 26px 26px 0 0; padding: 10px 18px 18px;
+    box-shadow: 0 -8px 30px rgba(0,0,0,.12); z-index: 4; }
+  .sa .grab { width: 38px; height: 4px; border-radius: 2px; background: var(--border); margin: 0 auto 14px; }
+  .sa .sheet h4 { font-size: 17px; }
+  .sa .search { display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 14px; background: var(--surface2); border-radius: 18px; font-size: 13px; margin: 12px 0 10px; }
+  .sa .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex: 0 0 auto; }
+  .sa .place { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .sa .place:last-of-type { border-bottom: 0; }
+  .sa .place .ic { width: 34px; height: 34px; border-radius: 12px; background: var(--surface2); display: grid; place-items: center; color: var(--accent); }
+  .sa .place small { display: block; font-size: 11px; color: var(--muted); }
+  .sa .seg { display: flex; background: var(--surface2); border-radius: 14px; padding: 4px; margin-top: 10px; font-size: 12px; font-weight: 600; }
+  .sa .seg span { flex: 1; text-align: center; padding: 8px; border-radius: 10px; }
+  .sa .seg .on { background: var(--surface); color: var(--accent); box-shadow: 0 2px 6px rgba(0,0,0,.06); }
+  .sa .route-card { position: absolute; top: 88px; left: 16px; right: 16px; background: var(--surface); border-radius: 18px; padding: 10px 14px;
+    box-shadow: var(--shadow); z-index: 3; font-size: 12px; }
+  .sa .route-card div { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
+  .sa .sq { width: 10px; height: 10px; border-radius: 2px; background: var(--text); }
+  .sa .ride { display: flex; align-items: center; gap: 12px; padding: 9px 12px; border-radius: 18px; border: 1.5px solid transparent; margin-bottom: 4px; }
+  .sa .ride.on { border-color: var(--accent); background: var(--surface2); }
+  .sa .ride .car { width: 48px; height: 34px; border-radius: 10px; background: var(--surface2); display: grid; place-items: center; color: var(--accent); }
+  .sa .ride.on .car { background: var(--surface); }
+  .sa .ride .info { flex: 1; font-size: 13px; font-weight: 600; }
+  .sa .ride .info small { display: block; font-weight: 400; font-size: 11px; color: var(--muted); }
+  .sa .ride .price { font-weight: 700; font-size: 14px; }
+  .sa .pay { display: flex; justify-content: space-between; font-size: 12.5px; padding: 10px 2px 12px; border-top: 1px solid var(--border); margin-top: 4px; }
+  .sa .pay b { color: var(--accent); }
+
+  /* =========================================================
+     STYLE B — SUPER-APP DASHBOARD (Fresh Teal)
+     ========================================================= */
+  .sb { --font: 'Plus Jakarta Sans', sans-serif; --bg: #F3F7F6; --surface: #FFFFFF; --surface2: #E8F6F4; --text: #0F1F1E; --muted: #66807D;
+    --accent: #0E9F8E; --accent-dark: #0A7A6E; --on-accent: #FFFFFF; --border: #DDEBE9;
+    --map-bg: #EAF3F1; --map-road: #FFFFFF; --map-block: #DCEBE8; --route: #0E9F8E; --shadow: 0 10px 26px rgba(14,80,70,.10); }
+  .sb .btn { height: 52px; border-radius: 16px; background: var(--accent); color: #fff; font-weight: 700; font-size: 15px;
+    display: grid; place-items: center; box-shadow: 0 8px 20px rgba(14,159,142,.3); }
+  .sb .bg-img { position: absolute; inset: 0; background: url(assets/images/sunset.png) center 20% / cover; filter: hue-rotate(150deg) saturate(.8); }
+  .sb .bg-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,40,36,.05), rgba(0,40,36,.35)); }
+  .sb .brand { position: absolute; top: 52px; left: 22px; color: #fff; font-weight: 800; font-size: 22px; z-index: 2; letter-spacing: -.02em; }
+  .sb .brand small { display: block; font-weight: 500; font-size: 12px; opacity: .9; letter-spacing: 0; }
+  .sb .card { position: absolute; left: 10px; right: 10px; bottom: 10px; background: var(--surface); border-radius: 26px; padding: 22px 18px 18px; z-index: 2; }
+  .sb .card h3 { font-size: 21px; font-weight: 800; }
+  .sb .card p { font-size: 12.5px; margin: 4px 0 16px; }
+  .sb .input { display: flex; align-items: center; gap: 10px; height: 50px; border: 1.5px solid var(--accent); border-radius: 14px; padding: 0 14px; font-size: 13px; }
+  .sb .input b { font-weight: 700; }
+  .sb .terms { font-size: 10.5px; text-align: center; margin: 10px 0 14px; }
+  .sb .social { display: flex; gap: 10px; margin-top: 10px; }
+  .sb .social span { flex: 1; height: 44px; border: 1px solid var(--border); border-radius: 14px; display: grid; place-items: center; font-size: 12.5px; font-weight: 600; }
+  .sb .head { background: linear-gradient(135deg, var(--accent), var(--accent-dark)); color: #fff; padding: 46px 18px 54px; --status: #fff; }
+  .sb .head small { font-size: 11.5px; opacity: .85; }
+  .sb .head h3 { font-size: 19px; font-weight: 800; margin-top: 2px; }
+  .sb .loc { display: inline-flex; gap: 6px; align-items: center; margin-top: 8px; font-size: 11.5px; background: rgba(255,255,255,.18); padding: 5px 10px; border-radius: 20px; }
+  .sb .searchcard { margin: -34px 14px 0; background: var(--surface); border-radius: 18px; padding: 14px; box-shadow: var(--shadow); position: relative; font-size: 13px; }
+  .sb .searchcard div { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+  .sb .searchcard div + div { border-top: 1px dashed var(--border); }
+  .sb .pin { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
+  .sb .pin.end { background: #F25F4C; }
+  .sb .label { font-size: 13px; font-weight: 800; margin: 16px 16px 8px; display: flex; justify-content: space-between; }
+  .sb .label span { font-size: 11px; color: var(--accent); font-weight: 700; }
+  .sb .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0 14px; }
+  .sb .tile { background: var(--surface); border-radius: 16px; padding: 10px 2px 8px; text-align: center; font-size: 10.5px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+  .sb .tile em { display: block; font-style: normal; font-size: 22px; margin-bottom: 2px; }
+  .sb .promo { margin: 14px 14px 0; border-radius: 18px; padding: 14px; background: linear-gradient(110deg, #FFB547, #FF7A59); color: #fff; position: relative; overflow: hidden; }
+  .sb .promo b { font-size: 15px; display: block; }
+  .sb .promo small { font-size: 11px; opacity: .95; }
+  .sb .promo i { position: absolute; right: -6px; bottom: -12px; font-size: 56px; font-style: normal; opacity: .9; }
+  .sb .recent { margin: 0 14px; background: var(--surface); border-radius: 16px; padding: 4px 12px; font-size: 12.5px; }
+  .sb .recent div { display: flex; gap: 10px; align-items: center; padding: 8px 0; }
+  .sb .recent small { display: block; color: var(--muted); font-size: 10.5px; }
+  .sb .tabs { position: absolute; left: 0; right: 0; bottom: 0; height: 62px; background: var(--surface); display: flex; border-top: 1px solid var(--border); }
+  .sb .tabs span { flex: 1; display: grid; place-items: center; align-content: center; gap: 2px; font-size: 10px; font-weight: 600; color: var(--muted); }
+  .sb .tabs span em { font-style: normal; font-size: 17px; }
+  .sb .tabs .on { color: var(--accent); }
+  .sb .appbar { display: flex; align-items: center; gap: 12px; padding: 44px 16px 10px; font-weight: 800; font-size: 16px; }
+  .sb .appbar i { width: 34px; height: 34px; border-radius: 12px; background: var(--surface); display: grid; place-items: center; font-style: normal; }
+  .sb .minimap { position: relative; height: 120px; margin: 0 14px; border-radius: 18px; overflow: hidden; }
+  .sb .minimap .eta { position: absolute; right: 8px; bottom: 8px; background: var(--surface); padding: 4px 9px; border-radius: 10px; font-size: 10.5px; font-weight: 700; }
+  .sb .hscroll { display: flex; gap: 8px; padding: 0 14px; overflow: hidden; }
+  .sb .vcard { flex: 0 0 92px; background: var(--surface); border-radius: 16px; padding: 10px; border: 2px solid transparent; font-size: 11px; }
+  .sb .vcard.on { border-color: var(--accent); background: var(--surface2); }
+  .sb .vcard .car { color: var(--accent); height: 24px; }
+  .sb .vcard b { display: block; font-size: 13px; margin-top: 4px; }
+  .sb .fare { margin: 12px 14px 0; background: var(--surface); border-radius: 16px; padding: 10px 14px; font-size: 12px; }
+  .sb .fare div { display: flex; justify-content: space-between; padding: 3px 0; }
+  .sb .fare .tot { border-top: 1px dashed var(--border); margin-top: 4px; padding-top: 7px; font-weight: 800; font-size: 13.5px; }
+  .sb .coupon { margin: 10px 14px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; border: 1.5px dashed var(--accent);
+    border-radius: 14px; padding: 9px 12px; color: var(--accent); font-weight: 700; background: var(--surface2); }
+  .sb .footer { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 14px 16px; background: var(--surface); box-shadow: 0 -6px 18px rgba(0,0,0,.05); }
+
+  /* =========================================================
+     STYLE C — BOLD MINIMAL (Midnight Gold)
+     ========================================================= */
+  .sc { --font: 'Sora', sans-serif; --bg: #0E0F13; --surface: #17191F; --surface2: #20232B; --text: #F4F1EA; --muted: #858894;
+    --accent: #F4BE34; --on-accent: #17130A; --border: #262A33;
+    --map-bg: #15171C; --map-road: #262A33; --map-block: #1B1E24; --route: #F4BE34; }
+  .sc .pad { padding: 50px 22px 0; }
+  .sc .step { display: flex; gap: 6px; margin-bottom: 26px; }
+  .sc .step i { height: 4px; flex: 1; border-radius: 2px; background: var(--border); }
+  .sc .step i.on { background: var(--accent); }
+  .sc .big { font-size: 30px; font-weight: 700; line-height: 1.12; letter-spacing: -.02em; }
+  .sc .big em { font-style: normal; color: var(--accent); }
+  .sc .sub { font-size: 12.5px; margin-top: 10px; line-height: 1.5; }
+  .sc .number { font-size: 27px; font-weight: 300; margin-top: 30px; letter-spacing: .02em; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+  .sc .number b { font-weight: 600; }
+  .sc .number span { color: var(--border); }
+  .sc .keypad { position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(3, 1fr); padding: 8px 18px 20px; gap: 2px; }
+  .sc .keypad span { height: 50px; display: grid; place-items: center; font-size: 21px; font-weight: 400; }
+  .sc .fab { position: absolute; right: 22px; bottom: 246px; width: 58px; height: 58px; border-radius: 50%; background: var(--accent); color: var(--on-accent);
+    display: grid; place-items: center; font-size: 22px; font-weight: 700; box-shadow: 0 10px 30px rgba(244,190,52,.35); }
+  .sc .hello { display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-bottom: 18px; }
+  .sc .hello i { width: 34px; height: 34px; border-radius: 50%; background: var(--surface2); display: grid; place-items: center; font-style: normal; font-weight: 700; color: var(--accent); }
+  .sc .where { font-size: 18px; font-weight: 300; margin-top: 22px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+  .sc .where span { color: var(--accent); }
+  .sc .sugg { margin-top: 6px; }
+  .sc .sugg div { display: flex; justify-content: space-between; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--border); font-size: 14px; font-weight: 600; }
+  .sc .sugg small { display: block; font-size: 11px; font-weight: 400; color: var(--muted); margin-top: 2px; }
+  .sc .sugg em { font-style: normal; color: var(--muted); }
+  .sc .strip { position: relative; height: 92px; margin: 18px 22px 0; border-radius: 18px; overflow: hidden; }
+  .sc .strip .badge { position: absolute; left: 12px; bottom: 10px; font-size: 11px; font-weight: 600; background: var(--accent); color: var(--on-accent); padding: 5px 10px; border-radius: 10px; }
+  .sc .pillnav { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); display: flex; gap: 6px; background: var(--surface2); padding: 6px; border-radius: 30px; }
+  .sc .pillnav span { width: 46px; height: 40px; border-radius: 20px; display: grid; place-items: center; font-size: 16px; color: var(--muted); }
+  .sc .pillnav .on { background: var(--accent); color: var(--on-accent); width: 74px; font-size: 12px; font-weight: 700; }
+  .sc .trip { display: flex; gap: 12px; font-size: 12px; margin-bottom: 14px; }
+  .sc .trip .line { display: flex; flex-direction: column; align-items: center; padding-top: 4px; }
+  .sc .trip .line i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .sc .trip .line u { width: 2px; height: 22px; background: var(--border); }
+  .sc .trip .line b { width: 8px; height: 8px; background: var(--text); }
+  .sc .trip p { line-height: 1.2; padding-bottom: 14px; }
+  .sc .vehicle { margin: 0 22px; background: var(--surface); border-radius: 26px; padding: 18px; position: relative; border: 1px solid var(--border); }
+  .sc .vehicle .art { color: var(--accent); height: 82px; display: grid; place-items: center; }
+  .sc .vehicle .art svg { width: 170px; height: auto; }
+  .sc .vehicle h3 { font-size: 26px; font-weight: 700; letter-spacing: -.02em; }
+  .sc .vehicle .row { display: flex; justify-content: space-between; align-items: flex-end; }
+  .sc .vehicle .price { font-size: 32px; font-weight: 800; color: var(--accent); letter-spacing: -.03em; }
+  .sc .vehicle .meta { display: flex; gap: 8px; margin-top: 12px; }
+  .sc .vehicle .meta span { font-size: 10.5px; background: var(--surface2); padding: 5px 9px; border-radius: 10px; color: var(--muted); }
+  .sc .arrows { position: absolute; top: 46px; left: 8px; right: 8px; display: flex; justify-content: space-between; color: var(--muted); font-size: 18px; }
+  .sc .dots { display: flex; justify-content: center; gap: 6px; margin: 14px 0; }
+  .sc .dots i { width: 6px; height: 6px; border-radius: 3px; background: var(--border); }
+  .sc .dots i.on { width: 20px; background: var(--accent); }
+  .sc .slide { position: absolute; left: 22px; right: 22px; bottom: 26px; height: 60px; border-radius: 30px; background: var(--surface2); display: flex; align-items: center;
+    padding: 5px; font-size: 13px; font-weight: 600; color: var(--muted); }
+  .sc .slide i { width: 50px; height: 50px; border-radius: 50%; background: var(--accent); color: var(--on-accent); display: grid; place-items: center; font-style: normal; font-size: 18px; margin-right: 34px; }
+</style>
+</head>
+<body>
+<h1>Taxi Customer App — 3 UX Styles</h1>
+<p class="lead">Three different ways the app could work, not just three color schemes. Each one changes the layout, navigation and booking flow. The same three screens (Login, Home, Choose Ride) are shown for each so you can compare.</p>
+
+<!-- ================= STYLE A ================= -->
+<section class="style">
+  <div class="style-head">
+    <div>
+      <span class="tag">Like Uber · Bolt</span>
+      <h2>A · Map-First</h2>
+      <p>The map is the app. Everything happens in a bottom sheet that slides over the map. Warm maroon look with the sunset illustration.</p>
+    </div>
+    <ul>
+      <li><b>Navigation:</b> side drawer (☰). No tab bar, so the map gets the full screen.</li>
+      <li><b>Booking:</b> type where to go → choose a ride in the same sheet → confirm. 2 taps.</li>
+      <li><b>Best for:</b> a ride-only app where people book fast and see cars nearby.</li>
+      <li><b>Weak spot:</b> little room for offers, rentals or other services.</li>
+    </ul>
+  </div>
+  <div class="phones sa">
+    <div class="phone-wrap"><div class="phone">
+      <div class="status">9:41 <b></b></div>
+      <div class="hero"><img src="assets/images/sunset.png" alt=""></div>
+      <div class="login">
+        <h3>Welcome <em>Back</em></h3>
+        <p class="muted">Login with your phone number<br>to continue your journey</p>
+        <div class="field"><b>🇮🇳 +91 ▾</b><span class="muted">Enter your phone number</span></div>
+        <div class="remember"><i>✓</i> Remember me</div>
+        <div class="btn">Login <i>→</i></div>
+        <div class="or muted">OR</div>
+        <div class="signup muted">Don't have an account? <b>Sign Up</b></div>
+      </div>
+    </div><span>Login</span></div>
+
+    <div class="phone-wrap"><div class="phone">
+      <div class="status">9:41 <b></b></div>
+      <div class="map" data-map="cars"></div>
+      <div class="topbar"><div class="round">☰</div><div class="round avatar">E</div></div>
+      <div class="sheet">
+        <div class="grab"></div>
+        <h4>Where to?</h4>
+        <div class="search"><span class="dot"></span><span class="muted">Search destination</span></div>
+        <div class="place"><span class="ic">⌂</span><div>Home<small>12, Anna Nagar, Chennai</small></div></div>
+        <div class="place"><span class="ic">▣</span><div>Work<small>Tidel Park, Taramani</small></div></div>
+        <div class="seg"><span class="on">Ride now</span><span>Schedule</span></div>
+      </div>
+    </div><span>Home — map + bottom sheet</span></div>
+
+    <div class="phone-wrap"><div class="phone">
+      <div class="status">9:41 <b></b></div>
+      <div class="map" data-map="route"></div>
+      <div class="topbar"><div class="round">←</div></div>
+      <div class="route-card">
+        <div><span class="dot"></span>Anna Nagar, Chennai</div>
+        <div><span class="sq"></span>Tidel Park, Taramani</div>
+      </div>
+      <div class="sheet">
+        <div class="grab"></div>
+        <h4 style="margin-bottom:8px">Choose a ride</h4>
+        <div class="ride"><span class="car" data-car></span><div class="info">Mini<small>3 min · 4 seats</small></div><span class="price">₹189</span></div>
+        <div class="ride on"><span class="car" data-car></span><div class="info">Sedan<small>5 min · 4 seats</small></div><span class="price">₹245</span></div>
+        <div class="ride"><span class="car" data-car></span><div class="info">SUV<small>8 min · 6 seats</small></div><span class="price">₹329</span></div>
+        <div class="pay"><span>💵 Cash</span><b>Change</b></div>
+        <div class="btn">Confirm Sedan <i>→</i></div>
+      </div>
+    </div><span>Choose Ride — list in the sheet</span></div>
+  </div>
+</section>
+
+<!-- ================= STYLE B ================= -->
+<section class="style">
+  <div class="style-head">
+    <div>
+      <span class="tag">Like Ola · Rapido · Grab</span>
+      <h2>B · Super-App Dashboard</h2>
+      <p>Home is a dashboard of cards, not a map. Services, offers and recent trips sit on the first screen, with a tab bar at the bottom. Clean teal look.</p>
+    </div>
+    <ul>
+      <li><b>Navigation:</b> bottom tab bar (Home, Trips, Wallet, Profile).</li>
+      <li><b>Booking:</b> pick a service tile or enter where to go → full-page ride options with fare breakdown and coupon.</li>
+      <li><b>Best for:</b> several services (Auto, Rental, Outstation, Parcel), promotions and a wallet.</li>
+      <li><b>Weak spot:</b> one extra step before you see the map and cars.</li>
+    </ul>
+  </div>
+  <div class="phones sb">
+    <div class="phone-wrap"><div class="phone" style="--status:#fff">
+      <div class="status">9:41 <b></b></div>
+      <div class="bg-img"></div>
+      <div class="brand">TaxiGo<small>Rides, rentals & more</small></div>
+      <div class="card">
+        <h3>Get started</h3>
+        <p class="muted">Enter your mobile number. We'll send you an OTP.</p>
+        <div class="input"><b>🇮🇳 +91</b><span class="muted">98765 43210</span></div>
+        <p class="terms muted">By continuing you agree to our Terms & Privacy Policy</p>
+        <div class="btn">Continue</div>
+        <div class="social"><span>G&nbsp; Google</span><span> Apple</span></div>
+      </div>
+    </div><span>Login — card over full image</span></div>
+
+    <div class="phone-wrap"><div class="phone">
+      <div class="status" style="color:#fff">9:41 <b></b></div>
+      <div class="head">
+        <small>Good evening,</small>
+        <h3>Eswaran 👋</h3>
+        <div class="loc">📍 Anna Nagar, Chennai ▾</div>
+      </div>
+      <div class="searchcard">
+        <div><span class="pin"></span>Current location</div>
+        <div><span class="pin end"></span><span class="muted">Where are you going?</span></div>
+      </div>
+      <div class="label">Services <span>See all</span></div>
+      <div class="grid">
+        <div class="tile"><em>🚕</em>Ride</div><div class="tile"><em>🛺</em>Auto</div>
+        <div class="tile"><em>⏱️</em>Rental</div><div class="tile"><em>🛣️</em>Outstation</div>
+      </div>
+      <div class="promo"><b>20% off airport rides</b><small>Use code FLY20 · till Sunday</small><i>✈️</i></div>
+      <div class="label">Recent</div>
+      <div class="recent"><div>🕘<span>Tidel Park<small>Taramani · yesterday</small></span></div></div>
+      <div class="tabs">
+        <span class="on"><em>⌂</em>Home</span><span><em>🧾</em>Trips</span><span><em>👛</em>Wallet</span><span><em>👤</em>Profile</span>
+      </div>
+    </div><span>Home — dashboard + tab bar</span></div>
+
+    <div class="phone-wrap"><div class="phone">
+      <div class="status">9:41 <b></b></div>
+      <div class="appbar"><i>←</i>Choose your ride</div>
+      <div class="minimap"><div class="map" data-map="route"></div><span class="eta">28 min · 11 km</span></div>
+      <div class="label">Available</div>
+      <div class="hscroll">
+        <div class="vcard"><div class="car" data-car></div><b>Mini</b>₹189<br><span class="muted">3 min</span></div>
+        <div class="vcard on"><div class="car" data-car></div><b>Sedan</b>₹245<br><span class="muted">5 min</span></div>
+        <div class="vcard"><div class="car" data-car></div><b>SUV</b>₹329<br><span class="muted">8 min</span></div>
+      </div>
+      <div class="fare">
+        <div><span class="muted">Base fare</span><span>₹210</span></div>
+        <div><span class="muted">Taxes & fees</span><span>₹35</span></div>
+        <div class="tot"><span>Total</span><span>₹245</span></div>
+      </div>
+      <div class="coupon"><span>🏷️ Apply coupon</span><span>›</span></div>
+      <div class="footer"><div class="btn">Book Sedan · ₹245</div></div>
+    </div><span>Choose Ride — cards + fare details</span></div>
+  </div>
+</section>
+
+<!-- ================= STYLE C ================= -->
+<section class="style">
+  <div class="style-head">
+    <div>
+      <span class="tag">Bold & minimal</span>
+      <h2>C · One Step at a Time</h2>
+      <p>Large text, one question per screen, very little on screen. Dark with gold, so it feels premium and is easy on the eyes at night.</p>
+    </div>
+    <ul>
+      <li><b>Navigation:</b> small floating pill bar at the bottom.</li>
+      <li><b>Booking:</b> "Where to?" → swipe through cars one at a time → slide to book (no accidental taps).</li>
+      <li><b>Best for:</b> a premium or airport-cab brand that wants to stand out.</li>
+      <li><b>Weak spot:</b> comparing prices takes swipes instead of a glance.</li>
+    </ul>
+  </div>
+  <div class="phones sc">
+    <div class="phone-wrap"><div class="phone">
+      <div class="status">9:41 <b></b></div>
+      <div class="pad">
+        <div class="step"><i class="on"></i><i></i></div>
+        <div class="big">What's your<br><em>number?</em></div>
+        <p class="sub muted">We'll text you a code to log in or create your account.</p>
+        <div class="number">+91 <b>98765 4</b><span>____</span></div>
+      </div>
+      <div class="fab">→</div>
+      <div class="keypad"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span></span><span>0</span><span>⌫</span></div>
+    </div><span>Login — big type + built-in keypad</span></div>
+
+    <div class="phone-wrap"><div class="phone">
+      <div class="status">9:41 <b></b></div>
+      <div class="pad">
+        <div class="hello"><span class="muted">📍 Anna Nagar</span><i>E</i></div>
+        <div class="big">Hey Eswaran,<br>where <em>to?</em></div>
+        <div class="where"><span class="muted">Enter destination</span><span>⌕</span></div>
+        <div class="sugg">
+          <div><span>Work<small>Tidel Park, Taramani</small></span><em>↗</em></div>
+          <div><span>Airport<small>Chennai International</small></span><em>↗</em></div>
+          <div><span>Home<small>12, Anna Nagar</small></span><em>↗</em></div>
+        </div>
+      </div>
+      <div class="strip"><div class="map" data-map="cars"></div><span class="badge">6 cabs nearby · 2 min</span></div>
+      <div class="pillnav"><span class="on">Ride</span><span>🧾</span><span>👤</span></div>
+    </div><span>Home — text first, small map</span></div>
+
+    <div class="phone-wrap"><div class="phone">
+      <div class="status">9:41 <b></b></div>
+      <div class="pad">
+        <div class="trip">
+          <div class="line"><i></i><u></u><b></b></div>
+          <div><p>Anna Nagar</p><p>Tidel Park, Taramani</p></div>
+        </div>
+      </div>
+      <div class="vehicle">
+        <div class="arrows"><span>‹</span><span>›</span></div>
+        <div class="art" data-car></div>
+        <div class="row">
+          <div><span class="muted" style="font-size:11px">2 of 3</span><h3>Sedan</h3></div>
+          <div class="price">₹245</div>
+        </div>
+        <div class="meta"><span>5 min away</span><span>4 seats</span><span>AC</span></div>
+      </div>
+      <div class="dots"><i></i><i class="on"></i><i></i></div>
+      <p class="muted" style="text-align:center;font-size:12px">💵 Cash · <span style="color:var(--accent)">Change</span></p>
+      <div class="slide"><i>»</i>Slide to book</div>
+    </div><span>Choose Ride — swipe cards, slide to book</span></div>
+  </div>
+</section>
+
+<script>
+  const CAR = '<svg width="26" height="14" viewBox="0 0 26 14" fill="currentColor"><path d="M3 9.5 5 4.5C5.6 3 6.6 2 8.4 2h9.2c1.8 0 2.8 1 3.4 2.5L23 9.5c1.3.3 2 1 2 2.2V13H1v-1.3c0-1.2.7-1.9 2-2.2Zm4-.5h12l-1.2-3.4c-.3-.8-.8-1.1-1.6-1.1H9.8c-.8 0-1.3.3-1.6 1.1L7 9Z"/><circle cx="6" cy="13" r="1.6"/><circle cx="20" cy="13" r="1.6"/></svg>';
+
+  const MAP = (route) => `<svg viewBox="0 0 290 610" preserveAspectRatio="xMidYMid slice">
+    <rect width="290" height="610" fill="var(--map-bg)"/>
+    ${[[10,60,80,90],[110,50,90,70],[220,70,70,110],[20,180,70,100],[120,150,80,120],[215,210,80,80],[30,310,90,90],[140,300,70,70],[230,320,60,120]]
+      .map(([x,y,w,h]) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="var(--map-block)"/>`).join('')}
+    <g stroke="var(--map-road)" stroke-linecap="round" fill="none">
+      <path d="M-10 150 C80 140 180 175 300 140" stroke-width="14"/>
+      <path d="M100 -10 L95 620" stroke-width="12"/>
+      <path d="M205 -10 C210 200 200 300 215 620" stroke-width="10"/>
+      <path d="M-10 290 L300 300" stroke-width="10"/>
+      <path d="M-10 420 C100 400 200 440 300 410" stroke-width="8"/>
+    </g>
+    ${route ? `<path d="M60 380 L95 296 L98 210 C150 168 190 160 210 150 L212 110" stroke="var(--route)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="60" cy="380" r="8" fill="var(--route)" stroke="var(--surface)" stroke-width="3"/>
+      <rect x="204" y="102" width="16" height="16" rx="3" fill="var(--text)" stroke="var(--surface)" stroke-width="3"/>`
+    : `<circle cx="150" cy="240" r="34" fill="var(--accent)" opacity=".15"/>
+      <circle cx="150" cy="240" r="10" fill="var(--accent)" stroke="var(--surface)" stroke-width="4"/>
+      ${[[70,120],[240,190],[180,320],[60,260]].map(([x,y]) => `<g transform="translate(${x} ${y})" color="var(--text)">${CAR}</g>`).join('')}`}
+  </svg>`;
+
+  document.querySelectorAll('[data-map]').forEach(el => el.innerHTML = MAP(el.dataset.map === 'route'));
+  document.querySelectorAll('[data-car]').forEach(el => el.innerHTML = CAR);
+</script>
+</body>
+</html>
